@@ -1,22 +1,20 @@
 import React from 'react';
 import { connect, } from 'react-redux';
+import Blog from './Blog';
 
 const BlogPost = ({ blogs }) => (
 
   <ul>
-    { blogs.map((b,i) => {
-      return(
-        <li key={i}>
-          {b}
-        </li>
-      )
-    })
-  }
+    { 
+      blogs.map(b => {
+        return( <Blog key={b.id} {...b} /> )
+      })
+    }
   </ul>
 )
 
 const mapStateToProps = (state) => {
-  return { todos: state.blogs, };
+  return { blogs: state.blogs, };
 }
 
-export default connect(mapStateToProps)(TodoList);
+export default connect(mapStateToProps)(BlogPost);
